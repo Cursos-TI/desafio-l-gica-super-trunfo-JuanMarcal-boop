@@ -148,10 +148,17 @@ int main()
     printf("%s e %s", Estado1, Estado2);
     printf("%s tem %.2f de densidade demográfica e %s tem %.2f de densidade demográfica.\n", Cidade1, DENSIDADE1, Cidade2, DENSIDADE2);
     if (DENSIDADE1 < DENSIDADE2)
-
-      SUPER1 = área1 + PIB1 + Turistico1 + População1 + CAPITA1 - DENSIDADE1;
-    SUPER2 = área2 + PIB2 + Turistico2 + População2 + CAPITA2 - DENSIDADE2;
-
+    {
+      printf("%s vence!\n", Cidade1);
+    }
+    else if (DENSIDADE2 < DENSIDADE1)
+    {
+      printf("%s vence!\n", Cidade2);
+    }
+    else
+    {
+      printf("Empate!\n");
+    }
     return 0;
   }
 }
