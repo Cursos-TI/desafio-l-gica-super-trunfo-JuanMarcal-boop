@@ -1,6 +1,7 @@
 #include <stdio.h>
 int main()
 {
+  int P;
   unsigned int População1, População2, Turistico1, Turistico2;
   float área1, área2, PIB1, PIB2, CAPITA1, CAPITA2, DENSIDADE1, DENSIDADE2, SUPER1, SUPER2;
   char Código1[50], Código2[50];
@@ -23,8 +24,8 @@ int main()
   scanf("%u", &Turistico1);
   printf(" \n");
 
-  DENSIDADE1 = (float)População1 / área1;
   CAPITA1 = PIB1 / (float)População1;
+  DENSIDADE1 = (float)População1 / área1;
 
   printf("Carta 1: \n");
   printf("Estado: %s\n", Estado1);
@@ -69,79 +70,88 @@ int main()
   printf("Densidade demográfica: %.2f \n", DENSIDADE2);
   printf(" \n");
 
-  if (População1 > População2){
-    printf("Carta 1 tem maior população. \n");
-  }
-  else if (População2 > População1){
-    printf("Carta 2 tem maior população. \n");
-  }
-  else{
-    printf("As duas cartas têm a mesma população. \n");
-  }
+  printf("Escolha uma categoria para comparar as cartas: \n");
+  printf("1. População\n");
+  printf("2. área\n");
+  printf("3. PIB\n");
+  printf("4. Pontos Turísticos\n");
+  printf("5. Densidade Demográfica\n");
+  scanf("%d", &P);
 
-  if (área1 > área2){
-    printf("Carta 1 tem maior área. \n");
-  }
-  else if(área2 > área1){
-    printf("Carta 2 tem maior área. \n");
-  }
-  else{
-    printf("As duas cartas têm a mesma área. \n");
-  }
-
-  if(PIB1 > PIB2){
-    printf("Carta 1 tem maior PIB. \n");
-  }
-  else if(PIB2 > PIB1){
-    printf("Carta 2 tem maior PIB. \n");
-  }
-  else{
-    printf("As duas cartas têm o mesmo PIB. \n");
+  switch (P)
+  {
+  case 1:
+    printf("%s e %s", Estado1, Estado2);
+    printf("%s tem %u habitantes e %s tem %u habitantes.\n", Cidade1, População1, Cidade2, População2);
+    if (População1 > População2)
+    {
+      printf("%s vence!\n", Cidade1);
     }
+    else if (População2 > População1)
+    {
+      printf("%s vence!\n", Cidade2);
+    }
+    else
+    {
+      printf("Empate!\n");
+    }
+    break;
+  case 2:
+    printf("%s e %s", Estado1, Estado2);
+    printf("%s tem %.2f de área e %s tem %.2f de área.\n", Cidade1, área1, Cidade2, área2);
+    if (área1 > área2)
+    {
+      printf("%s vence!\n", Cidade1);
+    }
+    else if (área2 > área1)
+    {
+      printf("%s vence!\n", Cidade2);
+    }
+    else
+    {
+      printf("Empate!\n");
+    }
+    break;
+  case 3:
+    printf("%s e %s", Estado1, Estado2);
+    printf("%s tem %.2f de PIB e %s tem %.2f de PIB.\n", Cidade1, PIB1, Cidade2, PIB2);
+    if (PIB1 > PIB2)
+    {
+      printf("%s vence!\n", Cidade1);
+    }
+    else if (PIB2 > PIB1)
+    {
+      printf("%s vence!\n", Cidade2);
+    }
+    else
+    {
+      printf("Empate!\n");
+    }
+    break;
+  case 4:
+    printf("%s e %s", Estado1, Estado2);
+    printf("%s tem %u pontos turísticos e %s tem %u pontos turísticos.\n", Cidade1, Turistico1, Cidade2, Turistico2);
+    if (Turistico1 > Turistico2)
+    {
+      printf("%s vence!\n", Cidade1);
+    }
+    else if (Turistico2 > Turistico1)
+    {
+      printf("%s vence!\n", Cidade2);
+    }
+    else
+    {
+      printf("Empate!\n");
+    }
+    break;
+  case 5:
+    printf("%s e %s", Estado1, Estado2);
+    printf("%s tem %.2f de densidade demográfica e %s tem %.2f de densidade demográfica.\n", Cidade1, DENSIDADE1, Cidade2, DENSIDADE2);
+    if (DENSIDADE1 < DENSIDADE2)
 
+      SUPER1 = área1 + PIB1 + Turistico1 + População1 + CAPITA1 - DENSIDADE1;
+    SUPER2 = área2 + PIB2 + Turistico2 + População2 + CAPITA2 - DENSIDADE2;
 
-  if(Turistico1 > Turistico2){
-    printf("Carta 1 tem mais pontos turísticos. \n");
+    return 0;
   }
-  else if(Turistico2 > Turistico1){
-    printf("Carta 2 tem mais pontos turísticos. \n");
-  }
-  else{
-    printf("As duas cartas têm o mesmo número de pontos turísticos. \n");
-  }
-
-  if(CAPITA1 > CAPITA2){
-    printf("Carta 1 tem maior PIB per capita. \n");
-  }
-  else if(CAPITA2 > CAPITA1){
-    printf("Carta 2 tem maior PIB per capita. \n");
-  }
-  else{
-    printf("As duas cartas têm o mesmo PIB per capita. \n");
-  }
-
-  if(DENSIDADE1 > DENSIDADE2){
-    printf("Carta 1 tem maior densidade demográfica. \n");
-  }
-  else if(DENSIDADE2 > DENSIDADE1){
-    printf("Carta 2 tem maior densidade demográfica. \n");
-  }
-  else{
-    printf("As duas cartas têm a mesma densidade demográfica. \n");
-  }
-
-  if(SUPER1 > SUPER2){
-    printf("Carta 1 é a vencedora do Super Trunfo! \n");
-  }
-  else if(SUPER2 > SUPER1){
-    printf("Carta 2 é a vencedora do Super Trunfo! \n");
-  }
-  else{
-    printf("As duas cartas empataram no Super Trunfo! \n");
-  }
-
-  SUPER1 = área1 + PIB1 + Turistico1 + População1 + CAPITA1 - DENSIDADE1;
-  SUPER2 = área2 + PIB2 + Turistico2 + População2 + CAPITA2 - DENSIDADE2;
-
-  return 0;
 }
